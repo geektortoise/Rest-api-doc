@@ -13,14 +13,14 @@ class RestApiDocController {
     //def grailsApplication
     
     def index() {
-    	def layout = grailsApplication.mergedConfig.grails.plugins.restapidoc.layout
+    	def layout = grailsApplication.config.grails.plugins.restapidoc.layout
     	[layout: layout]
     }
 
     def api() {
         def input
         try {
-            input = servletContext.getResourceAsStream(grailsApplication.mergedConfig.grails.plugins.restapidoc.outputFileReading)
+            input = servletContext.getResourceAsStream(grailsApplication.config.grails.plugins.restapidoc.outputFileReading)
             render(input.text)
         }
         finally {
